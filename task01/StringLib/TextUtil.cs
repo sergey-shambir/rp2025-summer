@@ -15,8 +15,7 @@ public static class TextUtil
         // - Слово начинается и заканчивается на букву.
         // - Может содержать апострофы и дефисы внутри.
         // - Не содержит чисел или знаков препинания.
-        string pattern = @"\p{L}+(?:[\-\']\p{L}+)*";
-
+        const string pattern = @"\p{L}+(?:[\-\']\p{L}+)*";
         Regex regex = new(pattern, RegexOptions.Compiled);
 
         return regex.Matches(text)
