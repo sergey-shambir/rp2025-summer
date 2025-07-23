@@ -1,5 +1,4 @@
-﻿using System.Runtime.Serialization.Json;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace StringLib;
 
@@ -16,9 +15,9 @@ public static class TextUtil
         // - Слово начинается и заканчивается на букву.
         // - Может содержать апострофы и дефисы внутри.
         // - Не содержит чисел или знаков препинания.
-        var pattern = @"\p{L}+(?:[\-\']\p{L}+)*";
+        string pattern = @"\p{L}+(?:[\-\']\p{L}+)*";
 
-        var regex = new Regex(pattern, RegexOptions.Compiled);
+        Regex regex = new(pattern, RegexOptions.Compiled);
 
         return regex.Matches(text)
             .Select(match => match.Value)

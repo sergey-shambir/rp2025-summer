@@ -8,13 +8,13 @@ public class TextUtilTest
     [MemberData(nameof(SplitIntoWordParams))]
     public void Can_split_into_words(string input, string[] expected)
     {
-        var result = TextUtil.SplitIntoWords(input);
+        List<string> result = TextUtil.SplitIntoWords(input);
         Assert.Equal(expected, result);
     }
 
     public static TheoryData<string, string[]> SplitIntoWordParams()
     {
-        var data = new TheoryData<string, string[]>
+        return new TheoryData<string, string[]>
         {
             // Апостроф считается частью слова
             { "Can't do that", ["Can't", "do", "that"] },
@@ -64,7 +64,5 @@ public class TextUtilTest
             { "--", [] },
             { "'", [] },
         };
-
-        return data;
     }
 }
