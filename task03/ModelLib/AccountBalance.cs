@@ -5,14 +5,6 @@
 /// </summary>
 public class AccountBalance
 {
-    private const decimal DefaultBonusesAmount = 1000.00m;
-    private const decimal DefaultMaxOverdraft = 0.00m;
-
-    public AccountBalance()
-        : this(DefaultBonusesAmount, DefaultMaxOverdraft)
-    {
-    }
-
     public AccountBalance(decimal bonuses = 0, decimal maxOverdraft = 0)
     {
         if (bonuses < 0)
