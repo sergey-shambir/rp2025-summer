@@ -13,3 +13,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+
+# Sandbox directory
+sandbox/

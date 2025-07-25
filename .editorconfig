@@ -357,6 +357,10 @@ dotnet_diagnostic.SA1000.severity = none
 dotnet_diagnostic.SA1101.severity = none
 dotnet_diagnostic.SA1407.severity = none
 
+# Отключаем излишние правила StyleCop для документирующих комментариев
+dotnet_diagnostic.SA1623.severity = none
+dotnet_diagnostic.SA1611.severity = none
+
 # Запрет на var, встроенный в IDE
 dotnet_diagnostic.IDE0007.severity = error
 
