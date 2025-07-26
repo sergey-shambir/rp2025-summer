@@ -8,6 +8,9 @@ public readonly struct Vector3(double x, double y, double z)
     // Максимальное отклонение, при котором координаты всё ещё считаются равными.
     public const double Tolerance = 1e-10;
 
+    // Количество знаков после запятой у максимального отклонения.
+    public const int Precision = 10;
+
     /// <summary>
     ///  Координата по оси Ox.
     /// </summary>
@@ -28,6 +31,10 @@ public readonly struct Vector3(double x, double y, double z)
     /// </summary>
     public double Length => Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
 
+    public static bool operator ==(Vector3 left, Vector3 right) => left.Equals(right);
+
+    public static bool operator !=(Vector3 left, Vector3 right) => !(left == right);
+
     /// <summary>
     ///  Нормализует вектор, возвращая вектор с тем же направлением и длиной 1.
     /// </summary>
@@ -36,7 +43,7 @@ public readonly struct Vector3(double x, double y, double z)
         double length = Length;
         if (length <= Tolerance)
         {
-            return new Vector3(0, 0, 0);
+            throw new InvalidOperationException("Cannot normalize vector with zero length");
         }
 
         return new Vector3(X / length, Y / length, Z / length);
@@ -72,7 +79,7 @@ public readonly struct Vector3(double x, double y, double z)
     public Vector3 Project(Vector3 o)
     {
         double oLengthSquared = o.DotProduct(o);
-        if (oLengthSquared == 0)
+        if (oLengthSquared < Tolerance)
         {
             return new Vector3(0, 0, 0);
         }
